@@ -7,6 +7,7 @@ const Navbar = () => {
         <li><Link to='/appointment'>Appointment</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/signup'>Sign Up</Link></li>
     </React.Fragment>
     return (
         <div className="navbar bg-base-100 flex justify-between">
