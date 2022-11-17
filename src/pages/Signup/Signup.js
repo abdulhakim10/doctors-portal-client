@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
@@ -7,12 +8,21 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Signup = () => {
     const {register, handleSubmit, formState:{errors}} = useForm();
     const {signUp} = useContext(AuthContext);
+    const [signUpError, setSignUpError] = useState('');
    
     const handleSignUp = async(data) => {
         const email = data.email;
         const password = data.password;
+        const name = data.name;
 
-        await signUp(email, password);        
+        setSignUpError('');
+
+        await signUp(email, password, name)
+        .catch(error => {
+            console.log(error.message);
+            setSignUpError(error.message);
+        })       
+        toast('User create successfully')
     }
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -53,6 +63,9 @@ const Signup = () => {
                     </div>
                     <br />
                     <input className='btn btn-accent w-full max-w-xs' value='Sign Up' type="submit" />
+                    <div>
+                            {signUpError && <p className="text-red-600">{signUpError}</p> }
+                        </div>
                 </form>
                 <p>Have an account? Please go to <Link className='text-secondary' to='/login'>Login</Link></p>
                 <div className="divider">OR</div>
