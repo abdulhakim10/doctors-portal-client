@@ -19,9 +19,9 @@ const Login = () => {
 
         await logIn(email, password)
         navigate(from, {replace: true})
-        .catch(err => {
-            console.log(err.message)
-            setLogInError(err.message)
+        .catch(error => {
+            console.log(error.message)
+            setLogInError(error.message)
         })
     }
     return (

@@ -22,7 +22,7 @@ const Signup = () => {
             console.log(error.message);
             setSignUpError(error.message);
         })       
-        toast('User create successfully')
+        toast.success('User create successfully')
     }
     return (
         <div className='h-[800px] flex justify-center items-center'>
