@@ -29,6 +29,7 @@ const Signup = () => {
             <div className='w-96 p-7'>
                 <h2 className='text-4xl font-bold text-center'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
+                    
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Name</span></label>
                         <input type="text"
@@ -39,6 +40,7 @@ const Signup = () => {
                         />
                         {errors.name && <p className='text-red-600'>Name is required</p> }
                     </div>
+                    
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Email</span></label>
                         <input type="email"
@@ -49,6 +51,7 @@ const Signup = () => {
                         />
                         {errors.email && <p className="text-red-600">{errors.email.message}</p> }
                     </div>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Password</span></label>
                         <input type="password"
@@ -61,7 +64,9 @@ const Signup = () => {
                         />
                         {errors.password && <p className='text-red-600'>{errors.password.message}</p> }
                     </div>
+
                     <br />
+
                     <input className='btn btn-accent w-full max-w-xs' value='Sign Up' type="submit" />
                     <div>
                             {signUpError && <p className="text-red-600">{signUpError}</p> }
