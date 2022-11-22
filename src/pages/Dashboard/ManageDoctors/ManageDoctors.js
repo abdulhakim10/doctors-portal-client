@@ -39,8 +39,10 @@ const ManageDoctors = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            toast.success('Successfully Deleted')
-            refetch();
+            if(data.deletedCount > 0){
+                refetch();
+                toast.success(`Doctor ${doctor.name} Successfully Deleted`)
+            }
         })
     }
     return (
