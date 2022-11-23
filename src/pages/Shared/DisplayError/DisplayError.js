@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
-import { useRouteError } from 'react-router-dom';
+import { useNavigate, useRouteError } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const DisplayError = () => {
     const error = useRouteError();
     const {logOut} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogOut = async () => {
         await logOut();
     }
+    navigate('/login');
     return (
         <div>
             <p className='text-red-500'>Something went wrong...</p>
